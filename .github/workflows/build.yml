@@ -58,7 +58,7 @@ jobs:
         keyAlias=key
         storeFile=../android.keystore
         EOF
-        keytool -genkey -v -alias key -keystore android.keystore -keypass naizhao -storepass naizhao -keyalg RSA -keysize 4096 -validity 3650 -dname "CN=Discuz\! Q, OU=DNSPod, O=Tencent Cloud, L=ShenZhen, ST=GuangDong, C=CN"
+        keytool -genkey -v -alias key -keystore android.keystore -keypass naizhao -storepass naizhao -keyalg RSA -keysize 4096 -validity 3650 -dname "CN=Discuz Q, OU=DNSPod, O=Tencent Cloud, L=ShenZhen, ST=GuangDong, C=CN"
 
     - name: Build Android Version
       run: |
@@ -70,5 +70,5 @@ jobs:
       if: steps.compile.outputs.status == 'success'
       with:
         name: Discuz-Q-APP
-        path: openwrt/bin
+        path: build
 
