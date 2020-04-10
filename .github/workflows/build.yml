@@ -51,6 +51,7 @@ jobs:
 
     - name: Setup build environment
       run: |
+        pwd
         cd Discuz-Q-APP/discuz
         cat >> android/key.properties <<EOF
         storePassword=naizhao
@@ -63,6 +64,8 @@ jobs:
     - name: Build Android Version
       run: |
         df -lh
+        pwd
+        cd Discuz-Q-APP/discuz
         pwd
         flutter pub get
         flutter build apk
