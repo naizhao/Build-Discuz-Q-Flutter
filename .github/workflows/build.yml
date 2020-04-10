@@ -26,7 +26,6 @@ env:
   REPO_BRANCH: master
   SSH_ACTIONS: false
   TZ: Asia/Shanghai
-  DISCUZ_PWD: .
 
 jobs:
   build:
@@ -52,7 +51,6 @@ jobs:
 
     - name: Setup build environment
       run: |
-        env.DISCUZ_PWD = `pwd`
         echo "current path: "`pwd`
         cd Discuz-Q-APP/discuz
         cat >> android/key.properties <<EOF
