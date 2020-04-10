@@ -75,7 +75,6 @@ jobs:
         df -lh
         ls -lha
         ls -lha build
-        echo "::set-output name=status::success"
 
     # - name: Build iOS version
     #   run: |
@@ -94,11 +93,11 @@ jobs:
       run: |
         rm -rf ./artifact/
         mkdir -p ./artifact/
-        mv Discuz-Q-APP/discuz/build/app/outputs/apk/release/app-release.apk ./artifact/
+        mv ./Discuz-Q-APP/discuz/build/app/outputs/apk/release/app-release.apk ./artifact/
+        ls ./artifact/
 
     - name: Upload packages to directory
       uses: actions/upload-artifact@master
-      if: steps.compile.outputs.status == 'success'
       with:
         name: Discuz-Q-APP
         path: ./artifact/
