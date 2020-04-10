@@ -49,7 +49,7 @@ jobs:
       run: |
         git clone $REPO_URL -b $REPO_BRANCH Discuz-Q-APP
 
-    - name: Setup env
+    - name: Setup build environment
       run: |
         cd Discuz-Q-APP/discuz
         cat >> android/key.properties <<EOF
@@ -62,8 +62,13 @@ jobs:
 
     - name: Build Android Version
       run: |
+        df -lh
+        pwd
         flutter pub get
         flutter build apk
+        df -lh
+        ls -lha
+        ls -lha build
 
     - name: Upload packages to directory
       uses: actions/upload-artifact@master
