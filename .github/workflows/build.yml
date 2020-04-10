@@ -26,6 +26,7 @@ env:
   REPO_BRANCH: master
   SSH_ACTIONS: false
   TZ: Asia/Shanghai
+  DISCUZ_PWD: .
 
 jobs:
   build:
@@ -51,29 +52,30 @@ jobs:
 
     - name: Setup build environment
       run: |
+        env.DISCUZ_PWD = `pwd`
         echo "current path: "`pwd`
         cd Discuz-Q-APP/discuz
         cat >> android/key.properties <<EOF
         storePassword=naizhao
         keyPassword=naizhao
         keyAlias=key
-        storeFile=../android.keystore
+        storeFile=${{ env.DISCUZ_PWD }}/android.keystore
         EOF
         echo "current path: "`pwd`
         cat android/key.properties
         keytool -genkey -v -alias key -keystore android.keystore -keypass naizhao -storepass naizhao -keyalg RSA -keysize 4096 -validity 3650 -dname "CN=Discuz Q, OU=DNSPod, O=Tencent Cloud, L=ShenZhen, ST=GuangDong, C=CN"
 
-    - name: Build Android version
-      run: |
-        df -lh
-        echo "current path: "`pwd`
-        cd Discuz-Q-APP/discuz
-        echo "current path: "`pwd`
-        flutter pub get
-        flutter build apk
-        df -lh
-        ls -lha
-        ls -lha build
+    # - name: Build Android version
+    #   run: |
+    #     df -lh
+    #     echo "current path: "`pwd`
+    #     cd Discuz-Q-APP/discuz
+    #     echo "current path: "`pwd`
+    #     flutter pub get
+    #     flutter build apk
+    #     df -lh
+    #     ls -lha
+    #     ls -lha build
 
     # - name: Build iOS version
     #   run: |
@@ -89,10 +91,10 @@ jobs:
     #     flutter build ios
 
 
-    - name: Upload packages to directory
-      uses: actions/upload-artifact@master
-      if: steps.compile.outputs.status == 'success'
-      with:
-        name: Discuz-Q-APP
-        path: build
+    # - name: Upload packages to directory
+    #   uses: actions/upload-artifact@master
+    #   if: steps.compile.outputs.status == 'success'
+    #   with:
+    #     name: Discuz-Q-APP
+    #     path: Discuz-Q-APP/discuz/build
 
