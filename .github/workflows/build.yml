@@ -49,9 +49,19 @@ jobs:
       run: |
         git clone $REPO_URL -b $REPO_BRANCH Discuz-Q-APP
 
-    - name: Build Android Version
+    - name: Setup env
       run: |
         cd Discuz-Q-APP/discuz
+        cat >> android/key.properties <<EOF
+        storePassword=naizhao
+        keyPassword=naizhao
+        keyAlias=key
+        storeFile=../android.keystore
+        EOF
+        keytool -genkey -v -alias key -keystore android.keystore -keypass naizhao -storepass naizhao -keyalg RSA -keysize 4096 -validity 3650 -dname "CN=Discuz\! Q, OU=DNSPod, O=Tencent Cloud, L=ShenZhen, ST=GuangDong, C=CN"
+
+    - name: Build Android Version
+      run: |
         flutter pub get
         flutter build apk
 
