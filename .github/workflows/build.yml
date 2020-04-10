@@ -41,7 +41,7 @@ jobs:
         java-version: '14.x'
 
     - name: Initialization Flutter
-    - uses: subosito/flutter-action@v1.2.0
+      uses: subosito/flutter-action@v1.2.0
       with:
         channel: 'dev'
 
