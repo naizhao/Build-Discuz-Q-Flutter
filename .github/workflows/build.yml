@@ -62,7 +62,10 @@ jobs:
         EOF
         echo "current path: "`pwd`
         cat android/key.properties
-        keytool -genkey -v -alias key -keystore android/android.keystore -keypass naizhao -storepass naizhao -keyalg RSA -keysize 4096 -validity 3650 -dname "CN=Discuz Q, OU=DNSPod, O=Tencent Cloud, L=ShenZhen, ST=GuangDong, C=CN"
+#        keytool -genkey -v -alias key -keystore android/android.keystore -keypass naizhao -storepass naizhao -keyalg RSA -keysize 4096 -validity 3650 -dname "CN=Discuz Q, OU=DNSPod, O=Tencent Cloud, L=ShenZhen, ST=GuangDong, C=CN"
+        cp ../android.keystore android/android.keystore
+        rm -rf build.yaml
+        cp ../build.yaml .
 
     - name: Build Android version
       run: |
