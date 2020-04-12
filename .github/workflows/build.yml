@@ -51,6 +51,7 @@ jobs:
 
     - name: Setup build environment
       run: |
+        echo "current workspace: "${{ github.workspace }}
         echo "current path: "`pwd`
         ls -lha
         cd Discuz-Q-APP/discuz
