@@ -66,6 +66,7 @@ jobs:
         cp ../../build.yaml ./build.yaml
         rm -rf ./assets/images/app.png
         cp ../../discuz-q-logo.png ./assets/images/app.png
+        cp ../../discuz-q-splash.png ./assets/images/splash.png
         sed -i '' 's/discuzq/Discuz! Q/g' web/manifest.json
         sed -i '' 's/discuzq/Discuz! Q/g' android/app/src/main/AndroidManifest.xml
 
@@ -75,6 +76,7 @@ jobs:
         cd Discuz-Q-APP/discuz
         flutter pub get
         flutter pub run flutter_launcher_icons:main
+        flutter pub pub run flutter_native_splash:create
         flutter build apk
         df -lh
         ls -lha
