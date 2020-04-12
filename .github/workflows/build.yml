@@ -52,6 +52,7 @@ jobs:
     - name: Setup build environment
       run: |
         echo "current path: "`pwd`
+        ls -lha
         cd Discuz-Q-APP/discuz
         echo "::set-env name=DISCUZ_HOME::$PWD"
         cat >> android/key.properties <<EOF
@@ -61,6 +62,7 @@ jobs:
         storeFile=../android.keystore
         EOF
         echo "current path: "`pwd`
+        ls -lha
         cat android/key.properties
         cp ../android.keystore android/android.keystore
         rm -rf ./build.yaml
