@@ -52,7 +52,6 @@ jobs:
     - name: Setup build environment
       run: |
         echo "current workspace: "${{ github.workspace }}
-        ls -lha
         cd Discuz-Q-APP/discuz
         echo "::set-env name=DISCUZ_HOME::$PWD"
         cat >> android/key.properties <<EOF
@@ -61,7 +60,6 @@ jobs:
         keyAlias=key
         storeFile=../android.keystore
         EOF
-        ls -lha
         cat android/key.properties
         cp ../../android.keystore android/android.keystore
         rm -rf ./build.yaml
@@ -69,6 +67,7 @@ jobs:
         rm -rf ./assets/images/app.png
         cp ../../discuz-q-logo.png ./assets/images/app.png
         sed -i '' 's/discuzq/Discuz! Q/g' web/manifest.json
+        sed -i '' 's/discuzq/Discuz! Q/g' android/app/src/main/AndroidManifest.xml
 
     - name: Build Android version
       run: |
