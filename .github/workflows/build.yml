@@ -69,6 +69,7 @@ jobs:
         cp ../../discuz-q-logo.png ./assets/images/app.png
         cp ../../discuz-q-splash.png ./assets/images/splash.png
         sed -i '' 's/discuzq/Discuz! Q/g' web/manifest.json
+        sed -i '' 's/discuzq/Discuz! Q/g' android/app/src/main/AndroidManifest.xml
 
     - name: Build Android version
       run: |
