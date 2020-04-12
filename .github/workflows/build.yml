@@ -68,9 +68,8 @@ jobs:
         cp ../../build.yaml ./build.yaml
         rm -rf ./assets/images/app.png
         cp ../../discuz-q-logo.png ./assets/images/app.png
-        sed -i '' 's/name: discuzq/name: Discuz! Q/g' pubspec.yaml
-        sed -i '' 's/discuzQ/Discuz! Q/g' pubspec.yaml
-        
+        sed -i '' 's/discuzq/Discuz! Q/g' web/manifest.json
+
     - name: Build Android version
       run: |
         df -lh
