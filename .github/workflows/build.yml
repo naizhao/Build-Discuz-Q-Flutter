@@ -124,5 +124,5 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./artifact/release-${{ github.run_number }}-android.apk
-        asset_name: ./artifact/release-${{ github.run_number }}-android.apk
+        asset_name: app-release-${{ github.run_number }}-android.apk
         asset_content_type: application/zip
