@@ -52,7 +52,6 @@ jobs:
     - name: Setup build environment
       run: |
         echo "current workspace: "${{ github.workspace }}
-        echo "current path: "`pwd`
         ls -lha
         cd Discuz-Q-APP/discuz
         echo "::set-env name=DISCUZ_HOME::$PWD"
@@ -62,21 +61,18 @@ jobs:
         keyAlias=key
         storeFile=../android.keystore
         EOF
-        echo "current path: "`pwd`
         ls -lha
         cat android/key.properties
-        cp ../android.keystore android/android.keystore
+        cp ../../android.keystore android/android.keystore
         rm -rf ./build.yaml
-        cp ../build.yaml ./build.yaml
+        cp ../../build.yaml ./build.yaml
         rm -rf ./assets/images/app.png
-        cp ../discuz-q-logo.png ./assets/images/app.png
+        cp ../../discuz-q-logo.png ./assets/images/app.png
 
     - name: Build Android version
       run: |
         df -lh
-        echo "current path: "`pwd`
         cd Discuz-Q-APP/discuz
-        echo "current path: "`pwd`
         flutter pub get
         flutter build apk
         df -lh
