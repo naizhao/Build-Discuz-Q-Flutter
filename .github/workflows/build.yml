@@ -68,12 +68,14 @@ jobs:
         cp ../../build.yaml ./build.yaml
         rm -rf ./assets/images/app.png
         cp ../../discuz-q-logo.png ./assets/images/app.png
+        sed -i 's/name: discuzq/name: Discuz! Q/g' ./pubspec.yaml
 
     - name: Build Android version
       run: |
         df -lh
         cd Discuz-Q-APP/discuz
         flutter pub get
+        flutter pub run flutter_launcher_icons:main
         flutter build apk
         df -lh
         ls -lha
