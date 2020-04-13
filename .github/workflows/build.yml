@@ -77,7 +77,8 @@ jobs:
         cd Discuz-Q-APP/discuz
         flutter pub get
         flutter pub run flutter_launcher_icons:main
-        flutter build apk
+        flutter pub pub run flutter_native_splash:create
+        flutter build apk --release --no-shrink
         df -lh
         ls -lha
         ls -lha build
