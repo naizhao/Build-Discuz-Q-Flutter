@@ -1,5 +1,9 @@
 # Build-Discuz-Q-Flutter
 Build Discuz! Q Flutter APP using GitHub Actions
+[[https://github.com/virskor/DiscuzQ]]
+
+# 如何build最新版本
+点击star，就会自动编译一个新版本
 
 # 自定义方法
 修改`build.yaml`，把里面的`domain`和`appname`改为自己的Disucz! Q实际地址和APP的实际名字。
