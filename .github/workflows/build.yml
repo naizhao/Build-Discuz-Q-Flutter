@@ -9,8 +9,8 @@
 name: Build Discuz-Q-APP
 
 on:
-  release:
-    types: published
+#  release:
+#    types: published
   push:
     branches:
       - master
@@ -18,8 +18,8 @@ on:
 #      - '.config'
 #  schedule:
 #    - cron: 0 8 * * 5
-#     watch:
-#       types: started
+    watch:
+      types: started
 
 env:
   REPO_URL: https://github.com/virskor/DiscuzQ
